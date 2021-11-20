@@ -8,14 +8,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@Table(name = "client")
+@Table(name = "tb_client")
 public class Client {
-
+    private static final long serialVersionUID = 1L;
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id_client")
     private long idClient;
 
     @Column(name = "name")
@@ -32,29 +30,54 @@ public class Client {
 
     @JsonIgnore
     @OneToMany(mappedBy = "client")
-    private List<Delivery> delivery;
+    private List<Delivery> listDelivery;
 
-    public Client() {
 
+    public long getIdClient() {
+        return idClient;
     }
-    public Client(long idClient, String name, String lastName, String documentNumber, int documentType) {
+
+    public void setIdClient(long idClient) {
         this.idClient = idClient;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getDocumentNumber() {
+        return documentNumber;
+    }
+
+    public void setDocumentNumber(String documentNumber) {
         this.documentNumber = documentNumber;
+    }
+
+    public int getDocumentType() {
+        return documentType;
+    }
+
+    public void setDocumentType(int documentType) {
         this.documentType = documentType;
     }
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "idClient=" + idClient +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", documentNumber='" + documentNumber + '\'' +
-                ", documentType=" + documentType +
-                '}';
+    public List<Delivery> getListDelivery() {
+        return listDelivery;
     }
 
-
+    public void setListDelivery(List<Delivery> listDelivery) {
+        this.listDelivery = listDelivery;
+    }
 }

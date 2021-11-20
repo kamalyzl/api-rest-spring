@@ -7,40 +7,53 @@ import javax.persistence.*;
 
 
 @Entity
-@Getter
-@Setter
-@Table(name = "product")
+@Table(name = "tb_product")
 public class Product {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_producto")
     private long idProduct;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "type")
     private int type;
 
+    @Column(name = "description")
     private String description;
 
-    public Product() {
-
+    public long getIdProduct() {
+        return idProduct;
     }
 
-    public Product(long idProduct, String name, int type, String description) {
+    public void setIdProduct(long idProduct) {
         this.idProduct = idProduct;
-        this.name = name;
-        this.type = type;
-        this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "idProduct=" + idProduct +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                ", description='" + description + '\'' +
-                '}';
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
