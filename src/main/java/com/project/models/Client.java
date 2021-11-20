@@ -1,4 +1,4 @@
-package com.cibertec.project.models;
+package com.project.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;

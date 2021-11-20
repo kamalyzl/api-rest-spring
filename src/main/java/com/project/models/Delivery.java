@@ -1,13 +1,14 @@
-package com.cibertec.project.models;
+package com.project.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_delivery")
 public class Delivery {
@@ -17,7 +18,7 @@ public class Delivery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_delivery")
-    private long idDelivery;
+    private long id;
 
     @Column(name = "count")
     private int count;
@@ -33,35 +34,5 @@ public class Delivery {
     @JoinColumn(name = "id_client")
     private Client client;
 
-    public long getIdDelivery() {
-        return idDelivery;
-    }
 
-    public void setIdDelivery(long idDelivery) {
-        this.idDelivery = idDelivery;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
 }

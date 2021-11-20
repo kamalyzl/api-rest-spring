@@ -1,13 +1,13 @@
-package com.cibertec.project;
+package com.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication()
-public class LacaleraPedidosApplication {
+public class projectDelivery {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LacaleraPedidosApplication.class, args);
+		SpringApplication.run(projectDelivery.class, args);
 	}
 
 }

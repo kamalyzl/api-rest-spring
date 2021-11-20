@@ -1,6 +1,6 @@
-package com.cibertec.project.controllers;
+package com.project.controllers;
 
-import com.cibertec.project.models.Product;
+import com.project.models.Product;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

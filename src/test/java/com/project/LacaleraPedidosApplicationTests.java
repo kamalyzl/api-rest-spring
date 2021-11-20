@@ -1,10 +1,10 @@
-package com.cibertec.project;
+package com.project;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LacaleraPedidosApplicationTests {
+class projectDeliveryTests {
 
 	@Test
 	void contextLoads() {

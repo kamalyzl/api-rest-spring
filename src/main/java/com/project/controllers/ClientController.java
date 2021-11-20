@@ -1,12 +1,10 @@
-package com.cibertec.project.controllers;
+package com.project.controllers;
 
-import com.cibertec.project.models.Client;
-import com.cibertec.project.repository.ClientRepository;
-import com.cibertec.project.services.ClientService;
+import com.project.models.Client;
+import com.project.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

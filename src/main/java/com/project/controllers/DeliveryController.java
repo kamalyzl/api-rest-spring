@@ -1,13 +1,10 @@
-package com.cibertec.project.controllers;
+package com.project.controllers;
 
-import com.cibertec.project.models.Delivery;
-import com.cibertec.project.services.DeliveryService;
+import com.project.models.Delivery;
+import com.project.services.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
