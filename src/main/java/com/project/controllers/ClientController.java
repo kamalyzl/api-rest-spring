@@ -12,7 +12,6 @@ import java.util.Optional;
 @RequestMapping("/api/v1/client")
 public class ClientController {
 
-
     @Autowired
     private ClientService clientService;
 

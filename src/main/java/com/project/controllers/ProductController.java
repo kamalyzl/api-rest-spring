@@ -1,32 +1,32 @@
 package com.project.controllers;
 
 import com.project.models.Product;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.project.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("product")
+@RequestMapping("/api/v1/product")
 public class ProductController {
+
+    @Autowired
+    private ProductService productService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     List<Product> getAll(){
-        List<Product> list = new ArrayList<>();
-        Product product = new Product();
-        product.setName("Huevos dorados");
+        return productService.getAll();
+    }
 
-        list.add(product);
-        return list ;
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    Product create(@RequestBody Product obj){
+        return productService.create(obj);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    Product get(@PathVariable long id){
-        Product product = new Product();
-        product.setName("Huevos blancos ");
-        return product ;
+    Optional<Product> get(@PathVariable int id){
+        return productService.get(id);
     }
 }
