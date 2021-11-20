@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -31,8 +32,7 @@ public class Client {
     @Column(name = "document_type")
     private int documentType;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "client")
-    private List<Delivery> listDelivery;
+   // @OneToMany(mappedBy = "mClient")
+   // private List<Delivery> deliveries;
 
 }
