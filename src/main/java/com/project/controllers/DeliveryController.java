@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/delivery")
@@ -16,29 +17,27 @@ public class DeliveryController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     List<Delivery> getAll(){
-        return deliveryService.listAll();
+        return deliveryService.getAll();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    Delivery get(@PathVariable long id){
-        Delivery delivery = new Delivery();
-        delivery.setCount(2);
-        return delivery ;
+    Optional<Delivery> get(@PathVariable int id){
+        return deliveryService.get(id);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    Delivery create(@RequestBody Delivery delivery){
-        return delivery ;
+    Delivery create(@RequestBody Delivery obj){
+        return deliveryService.create(obj);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    Delivery update(@RequestBody Delivery delivery){
-        return delivery ;
+    Delivery update(@RequestBody Delivery obj){
+        return deliveryService.create(obj);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    void delete(@PathVariable long id) {
-        //roleService.delete(id);
+    void delete(@PathVariable int id) {
+        deliveryService.remove(id);
     }
 
 }

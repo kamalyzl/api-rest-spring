@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DeliveryService {
@@ -13,7 +14,19 @@ public class DeliveryService {
     @Autowired
     private DeliveryRepository deliveryDAO;
 
-    public List<Delivery> listAll() {
+    public Delivery create(Delivery obj) {
+        return deliveryDAO.save(obj);
+    }
+
+    public List<Delivery> getAll(){
         return deliveryDAO.findAll();
+    }
+
+    public Optional<Delivery> get(int id){
+        return deliveryDAO.findById(id);
+    }
+
+    public void remove (int id) {
+        deliveryDAO.deleteById(id);
     }
 }
