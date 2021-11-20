@@ -1,30 +1,36 @@
 package com.cibertec.project.controllers;
 
 import com.cibertec.project.models.Client;
+import com.cibertec.project.repository.ClientRepository;
+import com.cibertec.project.services.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("client")
+@RequestMapping("/api/v1/client")
 public class ClientController {
+
+
+    @Autowired
+    private ClientService clientService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     List<Client> getAll(){
-        List<Client> list = new ArrayList<>();
-        Client client = new Client();
-        client.setName("Carlos");
+        return clientService.getAll();
+    }
 
-        list.add(client);
-        return list ;
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    Client create(@RequestBody Client obj){
+        return clientService.create(obj);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    Client get(@PathVariable long id){
-        Client client = new Client();
-        client.setName("Juan");
-        return client ;
+    Optional<Client> get(@PathVariable int id){
+        return clientService.get(id);
     }
 
 }

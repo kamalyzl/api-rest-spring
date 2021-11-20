@@ -11,23 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/delivery")
 public class DeliveryController {
 
     @Autowired
     private DeliveryService deliveryService;
 
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
     List<Delivery> getAll(){
-        List<Delivery> list = new ArrayList<>();
-        Delivery delivery = new Delivery();
-        delivery.setCount(2);
-
-        list.add(delivery);
-
-        //return deliveryService.listDelivery();
-
-      return list ;
+        return deliveryService.listAll();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
