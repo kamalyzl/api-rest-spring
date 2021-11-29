@@ -7,8 +7,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class Response {
-    String status;
-    List<Delivery> delivery;
+public class ResponseClient {
 
+    String status;
+    List<Client> client;
 }

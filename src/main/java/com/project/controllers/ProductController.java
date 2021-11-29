@@ -1,6 +1,7 @@
 package com.project.controllers;
 
 import com.project.models.Product;
+import com.project.models.ResponseProduct;
 import com.project.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,11 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    List<Product> getAll(){
-        return productService.getAll();
+    ResponseProduct getAll(){
+        ResponseProduct res = new ResponseProduct();
+        res.setStatus("ok");
+        res.setProduct(productService.getAll());
+        return res;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)

@@ -1,7 +1,7 @@
 package com.project.controllers;
 
 import com.project.models.Delivery;
-import com.project.models.Response;
+import com.project.models.ResponseDelivery;
 import com.project.services.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,17 +17,20 @@ public class DeliveryController {
     private DeliveryService deliveryService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    Response getAll(){
-        Response res = new Response();
+    ResponseDelivery getAll(){
+        ResponseDelivery res = new ResponseDelivery();
         res.setStatus("ok");
         res.setDelivery(deliveryService.getAll());
         return res;
     }
 
     @RequestMapping(value = "/filter", params = { "sessionId" }, method = RequestMethod.GET)
-    List<Delivery> filter(@RequestParam("sessionId") String sessionId){
-        System.out.println("sessionid =>>>" + sessionId);
-       return deliveryService.searchBySessionId(sessionId);
+    ResponseDelivery filter(@RequestParam("sessionId") String sessionId){
+        ResponseDelivery res = new ResponseDelivery();
+        res.setStatus("ok");
+        res.setDelivery(deliveryService.searchBySessionId(sessionId));
+
+       return res;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
