@@ -24,6 +24,11 @@ public class Delivery {
     @Column(name = "count")
     private int count;
 
+    @Column(name = "session_id")
+    private String sessionId;
+
+    @Column(name = "delivery_address")
+    private String deliveryAddress;
 
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

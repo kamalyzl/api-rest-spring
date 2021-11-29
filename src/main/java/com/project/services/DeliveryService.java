@@ -24,6 +24,8 @@ public class DeliveryService {
         Delivery delivery = new Delivery();
         delivery.setCount(obj.getCount());
         delivery.setCreateDate(new Date());
+        delivery.setSessionId(obj.getSessionId());
+        delivery.setDeliveryAddress(obj.getDeliveryAddress());
 
         // add client
         Optional<Client> clientOptional = clientDAO.findById(1);
@@ -44,6 +46,7 @@ public class DeliveryService {
     }
 
     public void remove (int id) {
+        System.out.println("--delivery>>>>" + id);
         deliveryDAO.deleteById(id);
     }
 }
