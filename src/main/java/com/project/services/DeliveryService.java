@@ -7,7 +7,6 @@ import com.project.repository.DeliveryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +32,6 @@ public class DeliveryService {
        if(clientOptional.isPresent()) {
             delivery.setMClient(clientOptional.get());
         }
-
         deliveryDAO.save(delivery);
         return delivery;
     }
@@ -47,7 +45,6 @@ public class DeliveryService {
     }
 
     public void remove (int id) {
-        System.out.println("--delivery>>>>" + id);
         deliveryDAO.deleteById(id);
     }
 }
