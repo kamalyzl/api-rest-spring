@@ -38,4 +38,9 @@ public class Delivery {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn (name="client_id")
     private Client mClient;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler" })
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn (name="product_id")
+    private Product mProduct;
 }

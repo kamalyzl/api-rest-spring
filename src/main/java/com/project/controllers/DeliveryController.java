@@ -1,12 +1,10 @@
 package com.project.controllers;
 
 import com.project.models.Delivery;
-import com.project.models.Filter;
 import com.project.services.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

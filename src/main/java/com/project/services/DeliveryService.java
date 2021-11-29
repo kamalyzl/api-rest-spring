@@ -2,8 +2,10 @@ package com.project.services;
 
 import com.project.models.Client;
 import com.project.models.Delivery;
+import com.project.models.Product;
 import com.project.repository.ClientRepository;
 import com.project.repository.DeliveryRepository;
+import com.project.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,10 @@ public class DeliveryService {
     @Autowired
     private ClientRepository clientDAO;
 
+
+    @Autowired
+    private ProductRepository productDAO;
+
     public Delivery create(Delivery obj) {
         Delivery delivery = new Delivery();
         delivery.setCount(obj.getCount());
@@ -31,6 +37,12 @@ public class DeliveryService {
        Optional<Client> clientOptional = clientDAO.findById(obj.getMClient().getId());
        if(clientOptional.isPresent()) {
             delivery.setMClient(clientOptional.get());
+        }
+
+        // add producto
+        Optional<Product> productOptional = productDAO.findById(obj.getMProduct().getId());
+        if(clientOptional.isPresent()) {
+            delivery.setMProduct(productOptional.get());
         }
         deliveryDAO.save(delivery);
         return delivery;
