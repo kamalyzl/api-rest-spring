@@ -39,19 +39,6 @@ public class DeliveryService {
     }
 
     public List<Delivery> getAll(){
-
-      /*  List<Delivery> lista = new ArrayList<>();
-        Delivery delivery = new Delivery();
-        delivery.setCount(1);
-        delivery.setCreateDate(new Date());
-        delivery.setSessionId("2312312");
-        delivery.setDeliveryAddress("direccion de ejemplo");
-
-        Optional<Client> clientOptional = clientDAO.findById(1);
-        delivery.setMClient(clientOptional.get());
-        lista.add(delivery);
-        return lista; */
-
         return deliveryDAO.findAll();
     }
 
