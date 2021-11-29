@@ -47,4 +47,8 @@ public class DeliveryService {
     public void remove (int id) {
         deliveryDAO.deleteById(id);
     }
+
+    public List<Delivery> searchBySessionId(String sessionID){
+        return deliveryDAO.findBySessionId(sessionID);
+    }
 }

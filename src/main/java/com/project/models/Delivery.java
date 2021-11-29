@@ -34,7 +34,7 @@ public class Delivery {
     @Column(name = "create_date")
     private Date createDate;
 
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler" })
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn (name="client_id")
     private Client mClient;

@@ -1,10 +1,12 @@
 package com.project.controllers;
 
 import com.project.models.Delivery;
+import com.project.models.Filter;
 import com.project.services.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,12 @@ public class DeliveryController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     List<Delivery> getAll(){
         return deliveryService.getAll();
+    }
+
+    @RequestMapping(value = "/filter", params = { "sessionId" }, method = RequestMethod.GET)
+    List<Delivery> filter(@RequestParam("sessionId") String sessionId){
+        System.out.println("sessionid =>>>" + sessionId);
+       return deliveryService.searchBySessionId(sessionId);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
