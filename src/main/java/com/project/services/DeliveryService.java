@@ -22,7 +22,6 @@ public class DeliveryService {
     @Autowired
     private ClientRepository clientDAO;
 
-
     @Autowired
     private ProductRepository productDAO;
 
@@ -34,15 +33,15 @@ public class DeliveryService {
         delivery.setDeliveryAddress(obj.getDeliveryAddress());
 
         // add client
-       Optional<Client> clientOptional = clientDAO.findById(obj.getMClient().getId());
+       Optional<Client> clientOptional = clientDAO.findById(obj.getClient().getClientId());
        if(clientOptional.isPresent()) {
-            delivery.setMClient(clientOptional.get());
+            delivery.setClient(clientOptional.get());
         }
 
         // add producto
-        Optional<Product> productOptional = productDAO.findById(obj.getMProduct().getId());
+        Optional<Product> productOptional = productDAO.findById(obj.getProduct().getProductId());
         if(clientOptional.isPresent()) {
-            delivery.setMProduct(productOptional.get());
+            delivery.setProduct(productOptional.get());
         }
         deliveryDAO.save(delivery);
         return delivery;

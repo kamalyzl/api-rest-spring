@@ -18,7 +18,7 @@ public class Delivery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "delivery_id")
-    private int id;
+    private int deliveryId;
 
     @Column(name = "count")
     private int count;
@@ -37,10 +37,10 @@ public class Delivery {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler" })
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn (name="client_id")
-    private Client mClient;
+    private Client client; // mclient
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler" })
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn (name="product_id")
-    private Product mProduct;
+    private Product product; //mclient
 }
