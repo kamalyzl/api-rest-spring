@@ -31,6 +31,7 @@ public class DeliveryService {
         delivery.setCreateDate(new Date());
         delivery.setSessionId(obj.getSessionId());
         delivery.setDeliveryAddress(obj.getDeliveryAddress());
+        delivery.setStatus("created");
 
         // add client
        Optional<Client> clientOptional = clientDAO.findById(obj.getClient().getClientId());

@@ -29,6 +29,9 @@ public class Delivery {
     @Column(name = "delivery_address")
     private String deliveryAddress;
 
+    @Column(name = "status")
+    private String status;
+
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "create_date")
