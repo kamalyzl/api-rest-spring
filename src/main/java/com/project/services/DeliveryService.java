@@ -40,7 +40,7 @@ public class DeliveryService {
 
     public List<Delivery> getAll(){
 
-        List<Delivery> lista = new ArrayList<>();
+      /*  List<Delivery> lista = new ArrayList<>();
         Delivery delivery = new Delivery();
         delivery.setCount(1);
         delivery.setCreateDate(new Date());
@@ -48,14 +48,11 @@ public class DeliveryService {
         delivery.setDeliveryAddress("direccion de ejemplo");
 
         Optional<Client> clientOptional = clientDAO.findById(1);
-
         delivery.setMClient(clientOptional.get());
-
         lista.add(delivery);
-        return lista;
+        return lista; */
 
-
-       // return deliveryDAO.findAll();
+        return deliveryDAO.findAll();
     }
 
     public Optional<Delivery> get(int id){
