@@ -1,6 +1,7 @@
 package com.project.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -33,6 +34,7 @@ public class Delivery {
     @Column(name = "create_date")
     private Date createDate;
 
+    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn (name="client_id")
     private Client mClient;
