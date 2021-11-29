@@ -1,10 +1,8 @@
 package com.project.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -18,7 +16,7 @@ public class Delivery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_delivery")
+    @Column(name = "delivery_id")
     private int id;
 
     @Column(name = "count")
@@ -35,8 +33,7 @@ public class Delivery {
     @Column(name = "create_date")
     private Date createDate;
 
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn (name="client_id", nullable = false)
+    @JoinColumn (name="client_id")
     private Client mClient;
 }

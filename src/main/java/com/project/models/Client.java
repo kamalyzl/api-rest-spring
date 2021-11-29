@@ -1,12 +1,9 @@
 package com.project.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -17,7 +14,7 @@ public class Client {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_client")
+    @Column(name = "client_id")
     private int id;
 
     @Column(name = "name")

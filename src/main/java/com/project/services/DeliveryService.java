@@ -7,6 +7,7 @@ import com.project.repository.DeliveryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -28,8 +29,8 @@ public class DeliveryService {
         delivery.setDeliveryAddress(obj.getDeliveryAddress());
 
         // add client
-        Optional<Client> clientOptional = clientDAO.findById(1);
-        if(clientOptional.isPresent()) {
+       Optional<Client> clientOptional = clientDAO.findById(obj.getMClient().getId());
+       if(clientOptional.isPresent()) {
             delivery.setMClient(clientOptional.get());
         }
 
@@ -38,7 +39,23 @@ public class DeliveryService {
     }
 
     public List<Delivery> getAll(){
-        return deliveryDAO.findAll();
+
+        List<Delivery> lista = new ArrayList<>();
+        Delivery delivery = new Delivery();
+        delivery.setCount(1);
+        delivery.setCreateDate(new Date());
+        delivery.setSessionId("2312312");
+        delivery.setDeliveryAddress("direccion de ejemplo");
+
+        Optional<Client> clientOptional = clientDAO.findById(1);
+
+        delivery.setMClient(clientOptional.get());
+
+        lista.add(delivery);
+        return lista;
+
+
+       // return deliveryDAO.findAll();
     }
 
     public Optional<Delivery> get(int id){
