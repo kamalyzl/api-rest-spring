@@ -19,13 +19,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-   /* @Autowired
+    @Autowired
     private UserSession userDetails;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     UserDetails getDetailUser(@RequestBody User us){
         return userDetails.loadUserByUsername(us.getUsername());
-    }*/
+    }
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
