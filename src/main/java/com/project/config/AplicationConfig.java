@@ -1,19 +1,66 @@
 package com.project.config;
 
+import com.project.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 @Configuration
 @EnableSwagger2
-public class AplicationConfig {
+@EnableWebSecurity
+public class AplicationConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
+
+    @Autowired
+    private UserService userDetailService;
+
+    @Autowired
+    private BCryptPasswordEncoder bcrypt;
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder;
+    }
+
+    @Override
+    protected void configure (AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailService).passwordEncoder(bcrypt);
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedMethods("*");
+    }
+
+    @Override
+    protected void configure (HttpSecurity http) throws  Exception{
+        http.authorizeRequests()
+                .antMatchers("/api/v1/*")
+                .permitAll()
+                //.anyRequest()
+                //.authenticated()
+                //.and()
+                //.formLogin()
+                //.loginPage("/login")
+                //.permitAll()
+                .and()
+                .csrf().disable();
+    }
+
 
     @Bean
     public Docket api() {

@@ -29,13 +29,11 @@ public class DeliveryController {
         ResponseDelivery res = new ResponseDelivery();
         res.setStatus("ok");
         res.setDelivery(deliveryService.searchBySessionId(sessionId));
-
        return res;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     Optional<Delivery> get(@PathVariable int id){
-
         return deliveryService.get(id);
     }
 
@@ -44,10 +42,10 @@ public class DeliveryController {
         return deliveryService.create(obj);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+   /* @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     Delivery update(@RequestBody Delivery obj){
         return deliveryService.create(obj);
-    }
+    }*/
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     void delete(@PathVariable int id) {
