@@ -44,10 +44,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "status/{id}", method = RequestMethod.PATCH)
-    int updateStatus(@PathVariable(value = "id") int id, @RequestParam String status){
+    int updateStatus(@PathVariable(value = "id") int id, @RequestBody User us){
         Optional<User> alreadyUser =  userService.get(id);
         if (alreadyUser.isPresent()){
-            return userService.updateStatus(status, id);
+            return userService.updateStatus(us.getStatus(), id);
         }
         throw new Error("usuario no existe");
     }
