@@ -1,6 +1,6 @@
 package com.project.config;
 
-import com.project.services.UserService;
+import com.project.security.UserSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,15 +25,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class AplicationConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
     @Autowired
-    private UserService userDetailService;
+    private UserSession userDetailService;
 
     @Autowired
     private BCryptPasswordEncoder bcrypt;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        return bCryptPasswordEncoder;
+        return new BCryptPasswordEncoder();
     }
 
     @Override

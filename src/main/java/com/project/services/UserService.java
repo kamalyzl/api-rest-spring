@@ -1,16 +1,9 @@
 package com.project.services;
 
-import com.project.models.Client;
-import com.project.models.Delivery;
-import com.project.models.Product;
+
 import com.project.models.User;
 import com.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,23 +12,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
 
     @Autowired
     private UserRepository userDAO;
 
     @Autowired
     private BCryptPasswordEncoder encoder;
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-         User us =  userDAO.findByUsername(username);
-         //simulamos que tenemos roles
-        List<GrantedAuthority> roles = new ArrayList<>();
-        roles.add(new SimpleGrantedAuthority("ADMIN"));
-        UserDetails usd = new org.springframework.security.core.userdetails.User(us.getUsername(), us.getPassword(), roles);
-        return  usd;
-    }
 
     public User create(User obj) {
         User us = new User();
