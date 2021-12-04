@@ -1,4 +1,4 @@
-package com.project.models;
+package com.project.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,4 +24,6 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "status")
+    private String status;
 }

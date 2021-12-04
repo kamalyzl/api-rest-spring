@@ -1,12 +1,11 @@
 package com.project.controllers;
 
-import com.project.models.Client;
-import com.project.models.ResponseClient;
+import com.project.entity.Client;
+import com.project.entity.ResponseClient;
 import com.project.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController

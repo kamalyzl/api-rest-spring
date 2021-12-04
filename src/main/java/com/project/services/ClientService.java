@@ -1,6 +1,6 @@
 package com.project.services;
 
-import com.project.models.Client;
+import com.project.entity.Client;
 import com.project.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

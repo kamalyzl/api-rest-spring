@@ -1,8 +1,8 @@
 package com.project.services;
 
-import com.project.models.Client;
-import com.project.models.Delivery;
-import com.project.models.Product;
+import com.project.entity.Client;
+import com.project.entity.Delivery;
+import com.project.entity.Product;
 import com.project.repository.ClientRepository;
 import com.project.repository.DeliveryRepository;
 import com.project.repository.ProductRepository;

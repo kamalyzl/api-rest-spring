@@ -1,7 +1,7 @@
 package com.project.services;
 
 
-import com.project.models.Product;
+import com.project.entity.Product;
 import com.project.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

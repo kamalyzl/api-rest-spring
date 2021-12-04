@@ -52,10 +52,10 @@ public class AplicationConfig extends WebSecurityConfigurerAdapter implements We
                 .permitAll()
                 //.anyRequest()
                 //.authenticated()
-                //.and()
-                //.formLogin()
-                //.loginPage("/login")
-                //.permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/api/v1/session/login")
+                .permitAll()
                 .and()
                 .csrf().disable();
     }

@@ -1,4 +1,4 @@
-package com.project.models;
+package com.project.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,8 +7,8 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ResponseClient {
-
+public class ResponseDelivery {
     String status;
-    List<Client> client;
+    List<Delivery> delivery;
+
 }

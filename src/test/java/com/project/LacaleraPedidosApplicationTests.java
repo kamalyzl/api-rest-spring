@@ -1,6 +1,6 @@
 package com.project;
 
-import com.project.models.User;
+import com.project.entity.User;
 import com.project.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

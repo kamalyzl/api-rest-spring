@@ -2,7 +2,8 @@ package com.project.controllers;
 
 
 
-import com.project.models.User;
+import com.project.entity.User;
+import com.project.security.UserSession;
 import com.project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,10 +19,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-   /* @RequestMapping(value = "/", method = RequestMethod.GET)
-    UserDetails getDetailUser(){
-        return userService.loadUserByUsername("admin");
-    } */
+   /* @Autowired
+    private UserSession userDetails;
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    UserDetails getDetailUser(@RequestBody User us){
+        return userDetails.loadUserByUsername(us.getUsername());
+    }*/
+
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     List<User> list() {
@@ -38,10 +43,10 @@ public class UserController {
         return userService.create(obj);
     }
 
-   /* @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    User update(@RequestBody User obj){
-        return userService.create(obj);
-    }*/
+    /*@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    User update(@RequestBody User us){
+        return userService.create(us);
+    } */
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     void delete(@PathVariable int id) {
