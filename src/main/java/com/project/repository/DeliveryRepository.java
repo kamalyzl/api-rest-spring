@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface DeliveryRepository extends JpaRepository<Delivery, Integer> {
-    List<Delivery> findBySessionId(String sessionId);
+    public abstract List<Delivery> findBySessionId(String sessionId);
 }
