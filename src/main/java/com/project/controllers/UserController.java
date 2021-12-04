@@ -27,7 +27,6 @@ public class UserController {
         return userDetails.loadUserByUsername(us.getUsername());
     }
 
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
     List<User> list() {
         return userService.getAll();
@@ -49,7 +48,7 @@ public class UserController {
         if (alreadyUser.isPresent()){
             return userService.updateStatus(us.getStatus(), id);
         }
-        throw new Error("usuario no existe");
+        throw new Error("usuario ingresado no existe");
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
