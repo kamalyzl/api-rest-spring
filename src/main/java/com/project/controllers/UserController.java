@@ -43,10 +43,14 @@ public class UserController {
         return userService.create(obj);
     }
 
-    /*@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    User update(@RequestBody User us){
-        return userService.create(us);
-    } */
+    @RequestMapping(value = "status/{id}", method = RequestMethod.PATCH)
+    int updateStatus(@PathVariable(value = "id") int id, @RequestBody User us){
+        Optional<User> alreadyUser =  userService.get(id);
+        if (alreadyUser.isPresent()){
+            return userService.updateStatus(us.getStatus(), id);
+        }
+        throw new Error("usuario no existe");
+    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     void delete(@PathVariable int id) {

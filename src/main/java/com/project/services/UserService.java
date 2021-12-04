@@ -6,11 +6,13 @@ import com.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserService {
 
     @Autowired
@@ -27,6 +29,10 @@ public class UserService {
 
         userDAO.save(us);
         return us;
+    }
+
+    public int updateStatus(String status, int id){
+        return userDAO.updateStatus(status, id);
     }
 
     public void remove (int id) {
